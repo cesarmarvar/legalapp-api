@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_16_204009) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_16_210619) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -78,6 +78,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_16_204009) do
     t.string "email"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["password_digest"], name: "index_users_on_password_digest", unique: true
   end
 
   add_foreign_key "lawyer_specialities", "lawyers"
