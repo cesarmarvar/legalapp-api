@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Validations
   validates :email, presence: true, 
             uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
-  validates :password, presence: true,
+  validates :password, presence: true
             # format: { with: /^(?=.*\d)(?=.*([a-z]|[A-Z]))([\x20-\x7E]){8,}$/ }
 
   # Associations
