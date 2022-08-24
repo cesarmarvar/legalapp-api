@@ -1,10 +1,10 @@
 class Question < ApplicationRecord
   # Validations
   validates :question, presence: true
-  validates :explanation, presence: true, 
-  validates :explanation, length: { maximum: 550, too_long: "%{count} characters is the maximum allowed" }
+  validates :explanation, presence: true
+  validates :explanation, length: { maximum: 550, too_long: "characters exceed the maximum allowed" }
+  validates :confirmation, inclusion: { in: %w(yes no maybe)}
 
   # Associations
-  belongs_to :user
-  belongs_to :lawyer
+  belongs_to :user, optional: true
 end
