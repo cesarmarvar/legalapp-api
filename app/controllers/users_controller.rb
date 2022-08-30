@@ -9,7 +9,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    
     if @user.save
       user_data = {
         name: @user.name,
@@ -23,9 +22,8 @@ class UsersController < ApplicationController
     end
   end
 
-  
   def show
-    render json: @respond_user
+    render json: @respond_user, status: :ok
   end
   
   def update
@@ -34,9 +32,10 @@ class UsersController < ApplicationController
         name: current_user.name,
         email: current_user.email
       }
-      render json: respond_user, :status_ok
+      render json: respond_user, status: :ok
     else
       render json: {errors: current_user.errors }, status: :unprocessable_entity
+    end
   end
   
   def destroy
@@ -49,6 +48,7 @@ class UsersController < ApplicationController
   
   def set_user
     @respond_user = {
+      id: current_user.id,
       name: current_user.name,
       email: current_user.email,
     }
