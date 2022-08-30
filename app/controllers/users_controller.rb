@@ -1,4 +1,11 @@
 class UsersController < ApplicationController
+  skip_before_action :authorize, only: %i[create index show]
+  before_action :set_user, only: %i[show]
+
+  def index
+    users = User.all.order(:id)
+    render json: users, status: :ok
+  end
 
   def create
     @user = User.new(user_params)
