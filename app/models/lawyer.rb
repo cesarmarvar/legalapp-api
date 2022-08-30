@@ -9,13 +9,17 @@ class Lawyer < ApplicationRecord
   validates :credentials, presence: true
   validates :social_media, presence: true
   validates :state_location, presence: true
+  validates :office_address, presence: true
   validates :office_phone, length: { in: 6..12 }
   validates :cellphone, length: { in: 6..12 }
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :lat, presence: true
   validates :long, presence: true
+  validates :user_id, uniqueness: true
 
   # Associations
   has_many :answers, dependent: :destroy
   has_many :specialities
+  has_many :reviews
+  belongs_to :user
 end
