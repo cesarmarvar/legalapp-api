@@ -4,7 +4,13 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     
     if @user.save
-      render @user.to_json(except: [:password_digest]), status: :created
+      user_data = {
+        name: @user.name,
+        email: @user.email,
+        token: @user.token
+      }
+
+      render json: user_data, status: :created
     else
       render json: { errors: @user.errors }, status: :unprocessable_entity
     end
