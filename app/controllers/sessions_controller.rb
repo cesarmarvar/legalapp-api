@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       user.regenerate_token
       respond_user = {
         name: user.name,
-        email: user.email
+        email: user.email,
         token: user.token
       }
       render json: respond_user, status: :ok
