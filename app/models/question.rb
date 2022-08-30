@@ -6,5 +6,7 @@ class Question < ApplicationRecord
   validates :confirmation, inclusion: { in: %w(yes no maybe)}
 
   # Associations
-  belongs_to :user, optional: true
+  # belongs_to :user, required: false
+  belongs_to :user
+  has_many :answers, dependent: :destroy
 end
