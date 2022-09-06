@@ -14,7 +14,9 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(review_params)
+    @lawyer = Lawyer.find(params[:lawyer_id])
     if @review.save
+      @lawyer.update(average_rating: @lawyer.reviews.average(:rating).to_f)
       render json: @review, status: :created
     else
       render json: { errors: @review.errors }, status: :unprocessable_entity
@@ -64,5 +66,11 @@ class ReviewsController < ApplicationController
     :user_id 
     )
   end
+
+  # def set_reviews_average(reviews)
+  #   # update_column(:average_rating, reviews.average(:rating))
+    
+  # end
+
 
 end

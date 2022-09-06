@@ -60,6 +60,10 @@ class LawyersController < ApplicationController
       office_phone: data.office_phone,
       cellphone: data.cellphone,
       email: data.email,
+      score: {
+        reviews_count: data.reviews_count,
+        average_rating: data.average_rating,
+      }
       coordinates: {
         lat: data.lat, 
         long: data.long
@@ -80,7 +84,9 @@ class LawyersController < ApplicationController
     :office_address, 
     :office_phone, 
     :cellphone, 
-    :email, 
+    :email,
+    :reviews_count,
+    :average_rating,
     :lat, 
     :long
     )
