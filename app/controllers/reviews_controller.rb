@@ -16,7 +16,7 @@ class ReviewsController < ApplicationController
     @review = Review.new(review_params)
     @lawyer = Lawyer.find(params[:lawyer_id])
     if @review.save
-      @lawyer.update(average_rating: @lawyer.reviews.average(:rating).to_f)
+      count_average_review(@lawyer)
       render json: @review, status: :created
     else
       render json: { errors: @review.errors }, status: :unprocessable_entity
@@ -35,10 +35,15 @@ class ReviewsController < ApplicationController
   def destroy
     review = Review.find(params[:id])
     review.destroy
+    count_average_review(review.lawyer)
     head :ok
   end
 
   private
+
+  def count_average_review(lawyer)
+    lawyer.update(average_rating: lawyer.reviews.average(:rating).to_f)
+  end
   
   def set_review
     data = Review.find(params[:id])
