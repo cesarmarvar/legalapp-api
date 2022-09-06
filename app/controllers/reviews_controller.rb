@@ -33,7 +33,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
-    @review.destroy
+    review = Review.find(params[:id])
+    review.destroy
     head :ok
   end
 
@@ -66,11 +67,5 @@ class ReviewsController < ApplicationController
     :user_id 
     )
   end
-
-  # def set_reviews_average(reviews)
-  #   # update_column(:average_rating, reviews.average(:rating))
-    
-  # end
-
 
 end
