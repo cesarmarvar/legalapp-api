@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_05_195208) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_06_161825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_05_195208) do
     t.integer "reviews_count"
     t.float "average_rating", default: 0.0
     t.index ["user_id"], name: "index_lawyers_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "photoable_type", null: false
+    t.bigint "photoable_id", null: false
+    t.index ["photoable_type", "photoable_id"], name: "index_photos_on_photoable"
   end
 
   create_table "questions", force: :cascade do |t|

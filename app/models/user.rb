@@ -7,6 +7,7 @@ class User < ApplicationRecord
   # Associations
   has_secure_token
   has_secure_password
+  has_many :photos, as: :photoable, dependent: :destroy
   has_many :questions
   has_many :reviews
   has_one :lawyer

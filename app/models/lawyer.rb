@@ -18,7 +18,8 @@ class Lawyer < ApplicationRecord
   validates :user_id, uniqueness: true
 
   # Associations
-  has_many_attached :images
+  # has_many_attached :images
+  has_many :photos, as: :photoable, dependent: :destroy
   has_many :answers, dependent: :destroy
   has_many :specialities
   has_many :reviews
