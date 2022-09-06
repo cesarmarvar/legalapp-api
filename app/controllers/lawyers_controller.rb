@@ -63,7 +63,7 @@ class LawyersController < ApplicationController
       score: {
         reviews_count: data.reviews_count,
         average_rating: data.average_rating,
-      }
+      },
       coordinates: {
         lat: data.lat, 
         long: data.long
