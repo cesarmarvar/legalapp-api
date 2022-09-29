@@ -49,7 +49,7 @@ class LawyersController < ApplicationController
     @lawyer = {
       id: data.id,
       user_id: data.user_id,
-      name: data.name,
+      lawyer_name: data.lawyer_name,
       years_licensed: data.years_licensed,
       bio: data.bio,
       credentials: data.credentials,
@@ -74,7 +74,7 @@ class LawyersController < ApplicationController
   def lawyer_params
     params.permit(
     :user_id, 
-    :name, 
+    :lawyer_name, 
     :years_licensed, 
     :bio, 
     :credentials, 

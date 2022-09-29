@@ -1,6 +1,6 @@
 class Lawyer < ApplicationRecord
   # Validations
-  validates :name, presence: true
+  validates :lawyer_name, presence: true
   validates :years_licensed, presence: true
   validates :years_licensed, numericality: { only_integer: true}
   validates :bio, presence: true

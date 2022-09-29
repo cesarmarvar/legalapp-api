@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if user&.authenticate(params[:password])
       user.regenerate_token
       respond_user = {
-        name: user.name,
+        username: user.username,
         email: user.email,
         token: user.token
       }

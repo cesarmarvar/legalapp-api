@@ -53,7 +53,7 @@ class ReviewsController < ApplicationController
       title: data.title,
       content: data.content,
       context: data.context,
-      name: data.name,
+      reviewer_name: data.reviewer_name,
       email: data.email,
       lawyer_id: data.lawyer_id,
       user_id: data.user_id
@@ -66,7 +66,7 @@ class ReviewsController < ApplicationController
     :title, 
     :content, 
     :context, 
-    :name, 
+    :reviewer_name, 
     :email, 
     :lawyer_id, 
     :user_id 
