@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       user_data = {
-        name: @user.name,
+        username: @user.username,
         email: @user.email,
         token: @user.token
       }
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       respond_user = {
-        name: current_user.name,
+        username: current_user.username,
         email: current_user.email
       }
       render json: respond_user, status: :ok
@@ -49,13 +49,13 @@ class UsersController < ApplicationController
   def set_user
     @respond_user = {
       id: current_user.id,
-      name: current_user.name,
+      username: current_user.username,
       email: current_user.email,
     }
   end
 
   def user_params
-    params.permit(:name, :email, :password)
+    params.permit(:username, :email, :password)
   end
 
 end
