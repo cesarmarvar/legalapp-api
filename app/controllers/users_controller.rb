@@ -38,6 +38,14 @@ class UsersController < ApplicationController
     end
   end
   
+  def get_users_lawyer_id
+    if current_user.lawyer
+      render json: current_user.lawyer.id
+    else
+      render json: { errors: current_user.errors }, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     current_user.destroy
     head :ok
