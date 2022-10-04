@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   delete '/profile', to: 'users#destroy'
   get '/profile', to: 'users#show'
   get '/my-lawyer-profile', to: "users#get_users_lawyer"
+  get '/lawyer-photo', to: "users#get_user_photo"
 
   # Reviews:
   post '/reviews/new', to: 'reviews#create'
