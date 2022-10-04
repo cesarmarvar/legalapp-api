@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   patch '/profile/edit', to: 'users#update'
   delete '/profile', to: 'users#destroy'
   get '/profile', to: 'users#show'
-  get '/profile/lawyerid', to: "users#get_users_lawyer_id"
+  get '/my-lawyer-profile', to: "users#get_users_lawyer"
 
   # Reviews:
   post '/reviews/new', to: 'reviews#create'

@@ -38,9 +38,9 @@ class UsersController < ApplicationController
     end
   end
   
-  def get_users_lawyer_id
+  def get_users_lawyer
     if current_user.lawyer
-      render json: current_user.lawyer.id
+      render json: current_user.lawyer
     else
       render json: { errors: current_user.errors }, status: :unprocessable_entity
     end
