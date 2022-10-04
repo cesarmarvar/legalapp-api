@@ -36,6 +36,6 @@ Rails.application.routes.draw do
   get 'answers/lawyer/:id', to: 'answers#get_lawyer_answers'
 
   # Photos
-  post 'photo/new', to: 'photo#create'
+  post 'photo/new', to: 'photos#create'
 
 end
