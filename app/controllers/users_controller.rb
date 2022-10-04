@@ -46,6 +46,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def get_user_photo
+    if current_user.photo
+      render json: current_user.photo
+    else
+      render json: { errors: current_user.errors }, status: :unprocessable_entity
+    end
+  end
+
   def destroy
     current_user.destroy
     head :ok
