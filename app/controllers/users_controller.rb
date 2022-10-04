@@ -47,10 +47,10 @@ class UsersController < ApplicationController
   end
 
   def get_user_photo
-    if current_user.photo
-      render json: current_user.photo
+    if current_user.photos
+      render json: current_user.photos
     else
-      render json: { errors: current_user.errors }, status: :unprocessable_entity
+      render json: [], status: :not_found
     end
   end
 
