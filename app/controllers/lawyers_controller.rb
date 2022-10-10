@@ -35,6 +35,27 @@ class LawyersController < ApplicationController
     end
   end
 
+  def query_filter
+    lawyers = Lawyer.all
+    specialities = Speciality.all
+    practice_lawyers = []
+    if params[:query]
+      name_filter = lawyers.filter{ |lawyer| lawyer[:lawyer_name].include?(params[:query]) }
+      practice_filter = specialities.filter{ |spec| spec[:speciality].include?(params[:query])}
+      practice_filter.each do |p|
+        p.lawyer_specialities.each do |n|
+          practice_lawyers.push(n.lawyer)
+        end
+      end
+
+      render json: name_filter + practice_lawyers
+
+    else
+      render json: { errors: "Debe haber al menos un caracter en la busqueda" }, status: :unprocessable_entity
+    end
+  end
+
+
   def destroy
     lawyer = Lawyer.find(params[:id])
     lawyer.delete
