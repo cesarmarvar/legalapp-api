@@ -1,5 +1,5 @@
 class LawyersController < ApplicationController
-  skip_before_action :authorize, only: %i[index show]
+  skip_before_action :authorize, only: %i[index show query_filter]
   before_action :set_lawyer, only: %i[show]
 
   def index
@@ -40,8 +40,8 @@ class LawyersController < ApplicationController
     specialities = Speciality.all
     practice_lawyers = []
     if params[:query]
-      name_filter = lawyers.filter{ |lawyer| lawyer[:lawyer_name].include?(params[:query]) }
-      practice_filter = specialities.filter{ |spec| spec[:speciality].include?(params[:query])}
+      name_filter = lawyers.filter{ |lawyer| lawyer[:lawyer_name].downcase.include?(params[:query].downcase) }
+      practice_filter = specialities.filter{ |spec| spec[:speciality].downcase.include?(params[:query].downcase)}
       practice_filter.each do |p|
         p.lawyer_specialities.each do |n|
           practice_lawyers.push(n.lawyer)

@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # Lawyers:
   resources :lawyers 
   post '/lawyers/new' => 'lawyers#create'
+  get '/lawyers-searchquery' => 'lawyers#query_filter'
 
   # Questions:
   get '/questions', to: 'questions#index'
