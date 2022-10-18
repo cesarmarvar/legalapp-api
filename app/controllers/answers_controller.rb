@@ -41,12 +41,13 @@ class AnswersController < ApplicationController
     @answer = {
       id: data.id,
       answer: data.answer,
-      lawyer_id: data.lawyer_id
+      lawyer_id: data.lawyer_id,
+      lawyer_name: data.lawyer_name
     }
   end
 
   def answer_params
-    params.permit(:answer, :question_id, :lawyer_id)
+    params.permit(:answer, :question_id, :lawyer_id, :lawyer_name)
   end
 
 
