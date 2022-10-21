@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: %i[create index show]
-  before_action :set_user, only: %i[show]
+  skip_before_action :authorize, only: %i[create index]
 
   def index
     users = User.all.order(:id)
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @respond_user, status: :ok
+    render json: current_user.as_json(except: :password_digest)
   end
   
   def update
@@ -61,14 +60,6 @@ class UsersController < ApplicationController
   
   
   private
-  
-  def set_user
-    @respond_user = {
-      id: current_user.id,
-      username: current_user.username,
-      email: current_user.email,
-    }
-  end
 
   def user_params
     params.permit(:username, :email, :password)
