@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_18_202739) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_21_215828) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,19 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_202739) do
     t.string "lawyer_name"
     t.index ["lawyer_id"], name: "index_answers_on_lawyer_id"
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "contacts", force: :cascade do |t|
+    t.string "username"
+    t.integer "phone_number"
+    t.string "email"
+    t.string "title"
+    t.text "situation"
+    t.bigint "speciality_id", null: false
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["speciality_id"], name: "index_contacts_on_speciality_id"
   end
 
   create_table "lawyer_specialities", force: :cascade do |t|
@@ -140,6 +153,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_18_202739) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "answers", "lawyers"
   add_foreign_key "answers", "questions"
+  add_foreign_key "contacts", "specialities"
   add_foreign_key "lawyer_specialities", "lawyers"
   add_foreign_key "lawyer_specialities", "specialities"
   add_foreign_key "lawyers", "users"

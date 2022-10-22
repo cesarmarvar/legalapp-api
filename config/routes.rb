@@ -12,16 +12,16 @@ Rails.application.routes.draw do
   get '/my-lawyer-profile', to: "users#get_users_lawyer"
   get '/lawyer/photo', to: "users#get_user_photo"
 
+  # Lawyers:
+  resources :lawyers 
+  post '/lawyers/new' => 'lawyers#create'
+  get '/lawyers-searchquery' => 'lawyers#query_filter'
+
   # Reviews:
   post '/reviews/new', to: 'reviews#create'
   get '/reviews/lawyer/:id', to: 'reviews#index'
   get '/review/:id', to: 'reviews#show'
   delete 'review/:id', to: 'reviews#destroy'
-
-  # Lawyers:
-  resources :lawyers 
-  post '/lawyers/new' => 'lawyers#create'
-  get '/lawyers-searchquery' => 'lawyers#query_filter'
 
   # Questions:
   get '/questions', to: 'questions#index'
@@ -29,14 +29,27 @@ Rails.application.routes.draw do
   get '/questions/user/:id', to: 'questions#get_user_questions'
   get '/question/:id', to: 'questions#show'
   get '/question/answers/:id', to: 'questions#get_question_answers'
+  delete 'question/:id', to: 'questions#destroy'
 
   # Answers
   post 'answers/new', to: 'answers#create'
   get 'answers', to: 'answers#index'
   get 'answer/:id', to: 'answers#show'
   get 'answers/lawyer/:id', to: 'answers#get_lawyer_answers'
+  delete 'answer/:id', to: 'answers#destroy'
 
   # Photos
   post 'photo/new', to: 'photos#create'
+
+  # Specialities
+  post 'specialities/new', to: 'specialities#create'
+  get 'specialities', to: 'specialities#index'
+  delete 'speciality/:id', to: 'specialities#destroy'
+
+  # Contacts
+  post 'contacts/new', to: 'contacts#create'
+  get 'contacts', to: 'contacts#index'
+  get 'contacts/:id', to: 'contacts#show'
+  delete 'contacts/:id', to: 'contacts#destroy'
 
 end

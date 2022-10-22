@@ -24,6 +24,12 @@ class AnswersController < ApplicationController
     end
   end
 
+  def destroy
+    @answer = Answer.find(params[:id])
+    @answer.delete
+    head :ok
+  end
+
   def get_lawyer_answers
     answers = Answer.where(lawyer_id: params[:id])
     if answers
