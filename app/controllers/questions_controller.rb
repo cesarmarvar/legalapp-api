@@ -28,6 +28,12 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def destroy
+    @question = Question.find(params[:id])
+    @question.delete
+    head :ok
+  end
+
   def get_user_questions
     questions = Question.where(user_id: params[:id])
     if questions

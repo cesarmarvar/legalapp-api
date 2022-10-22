@@ -23,21 +23,34 @@ Rails.application.routes.draw do
   post '/lawyers/new' => 'lawyers#create'
   get '/lawyers-searchquery' => 'lawyers#query_filter'
   get '/lawyer/photo/:id', to: "lawyers#get_lawyer_photo"
-
+  
   # Questions:
   get '/questions', to: 'questions#index'
   post '/questions/new', to: 'questions#create'
   get '/questions/user/:id', to: 'questions#get_user_questions'
   get '/question/:id', to: 'questions#show'
   get '/question/answers/:id', to: 'questions#get_question_answers'
+  delete 'question/:id', to: 'questions#destroy'
 
   # Answers
   post 'answers/new', to: 'answers#create'
   get 'answers', to: 'answers#index'
   get 'answer/:id', to: 'answers#show'
   get 'answers/lawyer/:id', to: 'answers#get_lawyer_answers'
+  delete 'answer/:id', to: 'answers#destroy'
 
   # Photos
   post 'photo/new', to: 'photos#create'
+
+  # Specialities
+  post 'specialities/new', to: 'specialities#create'
+  get 'specialities', to: 'specialities#index'
+  delete 'speciality/:id', to: 'specialities#destroy'
+
+  # Contacts
+  post 'contacts/new', to: 'contacts#create'
+  get 'contacts', to: 'contacts#index'
+  get 'contacts/:id', to: 'contacts#show'
+  delete 'contacts/:id', to: 'contacts#destroy'
 
 end
