@@ -46,10 +46,10 @@ class UsersController < ApplicationController
   end
 
   def get_user_photo
-    if current_user.photos
+    if current_user.photos.size > 0
       render json: current_user.photos
     else
-      render json: [], status: :not_found
+      render json: { message: "User has no photos" }, status: :not_found
     end
   end
 

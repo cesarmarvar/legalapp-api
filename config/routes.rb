@@ -10,12 +10,7 @@ Rails.application.routes.draw do
   delete '/profile', to: 'users#destroy'
   get '/profile', to: 'users#show'
   get '/my-lawyer-profile', to: "users#get_users_lawyer"
-  get '/lawyer/photo', to: "users#get_user_photo"
-
-  # Lawyers:
-  resources :lawyers 
-  post '/lawyers/new' => 'lawyers#create'
-  get '/lawyers-searchquery' => 'lawyers#query_filter'
+  get '/user/photo', to: "users#get_user_photo"
 
   # Reviews:
   post '/reviews/new', to: 'reviews#create'
@@ -23,6 +18,12 @@ Rails.application.routes.draw do
   get '/review/:id', to: 'reviews#show'
   delete 'review/:id', to: 'reviews#destroy'
 
+  # Lawyers:
+  resources :lawyers 
+  post '/lawyers/new' => 'lawyers#create'
+  get '/lawyers-searchquery' => 'lawyers#query_filter'
+  get '/lawyer/photo/:id', to: "lawyers#get_lawyer_photo"
+  
   # Questions:
   get '/questions', to: 'questions#index'
   post '/questions/new', to: 'questions#create'

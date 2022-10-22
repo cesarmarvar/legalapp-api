@@ -62,6 +62,15 @@ class LawyersController < ApplicationController
     head :ok
   end
 
+  def get_lawyer_photo
+    lawyer = Lawyer.find(params[:id])
+
+    if lawyer.photos.size > 0
+      render json: lawyer.photos
+    else
+      render json: { message: "Lawyer has no photos" }, status: :not_found
+    end
+  end
 
   private
   
