@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_21_215828) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_24_222251) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,6 +94,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_21_215828) do
     t.bigint "user_id", null: false
     t.integer "reviews_count"
     t.float "average_rating", default: 0.0
+    t.string "image"
     t.index ["user_id"], name: "index_lawyers_on_user_id"
   end
 
