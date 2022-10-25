@@ -53,4 +53,8 @@ Rails.application.routes.draw do
   get 'contacts/:id', to: 'contacts#show'
   delete 'contacts/:id', to: 'contacts#destroy'
 
+  # Lawyer specialities
+  post 'lawyer-specialities/new', to: 'lawyer_specialities#create'
+  delete 'lawyer-specialities/:id', to: 'lawyer_specialities#destroy'
+
 end
