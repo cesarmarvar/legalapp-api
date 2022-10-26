@@ -10,6 +10,15 @@ class PhotosController < ApplicationController
     end
   end
 
+  def update
+    photo = Photo.find(params[:id])
+    if photo.update(photo_params)
+      render json: photo, status: :ok
+    else
+      render json: { errors: photo.errors }, status: :unprocessable_entity
+    end
+  end
+
   private
 
   def photo_params
