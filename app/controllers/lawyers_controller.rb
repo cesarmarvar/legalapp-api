@@ -90,6 +90,7 @@ class LawyersController < ApplicationController
       office_phone: data.office_phone,
       cellphone: data.cellphone,
       email: data.email,
+      image: data.image,
       score: {
         reviews_count: data.reviews_count,
         average_rating: data.average_rating,
@@ -118,7 +119,8 @@ class LawyersController < ApplicationController
     :reviews_count,
     :average_rating,
     :lat, 
-    :long
+    :long, 
+    :image
     )
   end
 
