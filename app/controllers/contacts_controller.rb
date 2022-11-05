@@ -1,4 +1,4 @@
-class ContactController < ApplicationController
+class ContactsController < ApplicationController
 
   def index
     @contacts = Contact.all.order(:id)
@@ -32,7 +32,7 @@ class ContactController < ApplicationController
 
   private
   def contact_params
-    params.permit(:username, :phone_number, :email, :title, :situation, :speciality, :location)
+    params.permit(:username, :phone_number, :email, :title, :situation, :speciality_id, :location)
   end
 
 end

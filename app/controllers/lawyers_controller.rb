@@ -104,7 +104,7 @@ class LawyersController < ApplicationController
 
   def lawyer_params
     params.permit(
-    :user_id, 
+    :user_id,
     :lawyer_name, 
     :years_licensed, 
     :bio, 
