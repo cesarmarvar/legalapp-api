@@ -22,7 +22,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: current_user.as_json(except: :password_digest)
+    # render json: current_user.as_json(except: :password_digest)
+    if @user
+      render json: @user
+    else
+      # render json: "Lawyer not found", status: :ok
+      render json: [], status: :not_found
+    end
   end
   
   def update
