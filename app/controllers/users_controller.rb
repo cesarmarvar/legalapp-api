@@ -23,10 +23,10 @@ class UsersController < ApplicationController
 
   def show
     # render json: current_user.as_json(except: :password_digest)
-    if @user
-      render json: @user
+    if current_user
+      render json: current_user.as_json(except: :password_digest)
     else
-      # render json: "Lawyer not found", status: :ok
+      ## render json: "Lawyer not found", status: :ok
       render json: [], status: :not_found
     end
   end
