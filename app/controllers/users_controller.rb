@@ -22,16 +22,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    # render json: current_user.as_json(except: :password_digest)
-    if current_user
-        user_with_id = {
-          id: current_user.id  
-          username: current_user.username,
-          email: current_user.email,
-        }
-      render json: user_with_id
+    if current_user 
+      render json: current_user.as_json(except: :password_digest)
+    
+    # if current_user
+    #     user_with_id = {
+    #       id: current_user.id  
+    #       username: current_user.username,
+    #       email: current_user.email,
+    #     }
+    #   render json: user_with_id
     else
-      ## render json: "Lawyer not found", status: :ok
+      # render json: "Lawyer not found", status: :ok
       render json: [], status: :not_found
     end
   end
