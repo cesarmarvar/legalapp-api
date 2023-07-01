@@ -24,6 +24,11 @@ default: &default
 development:
   <<: *default
   database: legalapp_api_development
+  adapter: postgresql
+  host: 127.0.0.1 
+  port: 5432
+  username: jdoe
+  password: Nala2023
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
