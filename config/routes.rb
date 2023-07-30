@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   delete '/logout' => 'sessions#destroy'
   
   # Users:
-  resources :users
+  # resources :users
+  get '/users', to: 'users#index'
   post '/profile', to: 'users#create'
   patch '/profile/edit', to: 'users#update'
   delete '/profile', to: 'users#destroy'
